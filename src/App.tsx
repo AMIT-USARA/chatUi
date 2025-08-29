@@ -215,7 +215,7 @@ function App() {
         </div>
 
         {/* Floating Elements */}
-        <div className="absolute top-8 right-8 z-20">
+        {/* <div className="absolute top-8 right-8 z-20">
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -227,7 +227,7 @@ function App() {
               AI Ready
             </span>
           </motion.div>
-        </div>
+        </div> */}
       </motion.main>
 
       

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { TailwindcssButtons } from './ui/TailwindcssButtons';
 
 interface WelcomeScreenProps {
   onNewChat: () => void;
@@ -48,28 +49,13 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onNewChat}) => (
       </motion.div>
 
       {/* Action Button */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-      >
-        <motion.button
-          whileHover={{ scale: 1.05, y: -2 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={onNewChat}
-          className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-700 via-purple-700 to-indigo-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="relative flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                 strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-              <path strokeLinecap="round" strokeLinejoin="round"
-                    d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-            </svg>
-            <span>Start New Conversation</span>
-          </div>
-        </motion.button>
-      </motion.div>
+      
+      <div onClick={onNewChat}>
+        <TailwindcssButtons />
+      </div>
+          
+        
+
 
       {/* Feature Cards */}
      
