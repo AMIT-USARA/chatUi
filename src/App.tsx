@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Sidebar } from './components/Sidebar';
 import { ChatArea } from './components/ChatArea';
 import { WelcomeScreen } from './components/WelcomeScreen';
+import { BackgroundBeams } from './components/ui/background-beams';
 
 // --- Type Definitions ---
 interface Source {
@@ -29,7 +30,7 @@ function App() {
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [activeConversationId, setActiveConversationId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
+  const [isChatOn,setIsChatOn] = useState<boolean>(false);
   // Load conversations from localStorage on initial render
   useEffect(() => {
     const savedConversations = localStorage.getItem('conversations');
@@ -60,6 +61,7 @@ function App() {
         },
       ],
     };
+    setIsChatOn(true);
     setConversations((prev) => [newConversation, ...prev]);
     setActiveConversationId(newId);
   };
@@ -72,7 +74,7 @@ function App() {
   // Send message handler
   const handleSendMessage = async (messageContent: string) => {
     if (!activeConversationId) return;
-
+    
     const userMessage: Message = { role: 'user', content: messageContent };
 
     const conversation = conversations.find((c) => c.id === activeConversationId);
@@ -141,11 +143,12 @@ function App() {
   };
 
   const activeConversation = conversations.find((c) => c.id === activeConversationId);
-
+// bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-slate-900 dark:to-gray-800
   return (
-    <div className="flex h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-slate-900 dark:to-gray-800 font-inter antialiased">
+    <div className="min-h-screen w-full rounded-md bg-neutral-950  antialiased">
+    <div className="flex h-screen  font-inter antialiased">
       {/* Sidebar Container */}
-      <motion.div
+     {isChatOn && <motion.div
         initial={{ x: -300, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
@@ -157,7 +160,7 @@ function App() {
           onNewChat={handleNewChat}
           onSwitchConversation={handleSwitchConversation}
         />
-      </motion.div>
+      </motion.div>}
 
       {/* Main Content Area */}
       <motion.main
@@ -202,10 +205,10 @@ function App() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.1 }}
                 className="h-full"
               >
-                <WelcomeScreen onNewChat={handleNewChat} />
+                <WelcomeScreen onNewChat={handleNewChat}/>
               </motion.div>
             )}
           </AnimatePresence>
@@ -226,6 +229,11 @@ function App() {
           </motion.div>
         </div>
       </motion.main>
+
+      
+      
+    </div>
+    <BackgroundBeams />
     </div>
   );
 }

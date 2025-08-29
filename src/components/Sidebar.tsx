@@ -59,7 +59,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onNewChat,
   onSwitchConversation,
 }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
@@ -90,7 +90,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               transition={{ duration: 0.2 }}
               className="text-lg font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent whitespace-nowrap"
             >
-              NitinGPT
+              AURA
             </motion.h1>
           )}
         </AnimatePresence>
@@ -238,7 +238,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           >
             <div className="flex items-center justify-center">
               <p className="text-xs text-slate-400 font-medium">
-                Powered by <span className="text-slate-300">NitinGPT</span>
+                Powered by <span className="text-slate-300">AURA</span>
               </p>
             </div>
           </motion.div>

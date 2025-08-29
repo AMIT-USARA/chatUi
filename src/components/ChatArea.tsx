@@ -129,7 +129,7 @@ const EmptyState: React.FC = () => (
       <FiCpu className="w-10 h-10 text-white" />
     </div>
     <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-3">
-      Welcome to NitinGPT
+      Welcome to AURA
     </h2>
     <p className="text-gray-600 dark:text-gray-400 max-w-md leading-relaxed mb-6">
       Start a conversation by typing your question below. I'm here to help with anything you need!
